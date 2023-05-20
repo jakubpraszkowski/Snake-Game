@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cstdlib>
 
-#include "Plansza.h"
 #include "Logika.h"
 
 int main()

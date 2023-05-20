@@ -103,7 +103,7 @@ void Plansza::Rysowanie_planszy()
     cout << "owoc: " << ktoryOwoc << '\t' << '\t' << "glowaX:Y: " << glowaX << ':' << glowaY << endl;
     cout << "cialoX.size()/cialoY.size() : " << cialoX.size() << '/' << cialoY.size() << endl;
     for (int i = 0; i < cialoX.size(); i++) { cout << cialoX[i] << '\t' << cialoY[i] << endl; }
-    cout << "dog" << msg;
+    cout << endl;
 }
 
 void Plansza::cleanup()
