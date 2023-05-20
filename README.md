@@ -16,28 +16,18 @@
 
 ### Prerequisites
 
-- C++11 compiler (e.g., g++),
-- conio.h library (only for Windows users).
-- windows.h library (only for Windows users).
+- C++11 compiler (e.g., g++)
+    - install on Ubuntu: `sudo apt-get install g++`
+    - install on macOS: `brew install gcc`
+- ncurses library
+  - install on Ubuntu: `sudo apt-get install libncurses5-dev libncursesw5-dev`
+  - install on macOS: `brew install ncurses`
+- cmake
+  - install on Ubuntu: `sudo apt-get install cmake`
+  - install on macOS: `brew install cmake`
+- In CmakeLists.txt link library with ncurses and tinfo
+  - `target_link_libraries(Snake_Game ncurses tinfo)`
 
-### Installation
-
-1. Clone the repository:
-
-   ```shell
-   git clone https://github.com/jakubpraszkowski/Snake-Game.git
-    cd snake-game
-    ```
-2. Compile the program:
-
-   ```shell
-   g++ -std=c++11 -o snake-game main.cpp
-   ```
-3. Run the program:
-
-   ```shell
-    ./snake-game
-    ```
 ## How to play
 1. Use the arrow keys (↑, ↓, ←, →) to navigate the snake.
 2. Eat the fruits (apples, pineapple, and bananas) to score points and make the snake grow longer.

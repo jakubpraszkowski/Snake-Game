@@ -1,0 +1,144 @@
+#include "Logic.h"
+#include <cstdlib>
+#include <ncurses.h>
+#include <csignal>
+
+void Logic::refresh()
+{
+    Board::loadBoard();
+    do
+    {
+        clear();
+        fruits();
+        snake(extend);
+        controls();
+        Board::printBoard();
+        GameOver();
+        usleep(200000);
+    } while (!gameOver);
+    clear();
+    Board::cleanup();
+}
+
+void Logic::fruits()
+{
+    if (Board::headX == fruitX && Board::headY == fruitY)
+    {
+        switch (whichFruit)
+        {
+            case 0:
+                Board::score += 5;
+                break;
+            case 1:
+                Board::score += 10;
+                break;
+            case 2:
+                Board::score += 1;
+                break;
+        }
+
+        extend = true;
+
+        fruit = (rand() % 100);
+        fruitX = rand() % SizeX[choose];
+        fruitY = rand() % SizeY[choose];
+
+        if (10 > fruit and fruit >= 0)
+        {
+            whichFruit = 0;
+        }
+        else if (21 > fruit and fruit > 10)
+        {
+            whichFruit = 1;
+        }
+        else if (101 > fruit and fruit > 20)
+        {
+            whichFruit = 2;
+        }
+    }
+}
+
+void Logic::snake(bool& extend)
+{
+    tempX1 = Board::bodyX[0];
+    tempY1 = Board::bodyY[0];
+    bodyX[0] = headX;
+    bodyY[0] = headY;
+
+    for (int i = 1; i < Board::bodyX.size(); i++)
+    {
+        tempX2 = Board::bodyX[i];
+        tempY2 = Board::bodyY[i];
+        Board::bodyX[i] = tempX1;
+        Board::bodyY[i] = tempY1;
+        tempX1 = tempX2;
+        tempY1 = tempY2;
+    }
+
+    if (extend)
+    {
+        Board::bodyX.push_back(tempX1);
+        Board::bodyY.push_back(tempY1);
+        extend = false;
+    }
+}
+
+void Logic::controls()
+{
+    int ch = getch();
+
+    if (ch != ERR) {
+        charDirection = ch;
+    }
+
+    if (!(charDirection == 'w' || charDirection == 'a' || charDirection == 's' || charDirection == 'd')) {
+        charDirection = tempDirection;
+    }
+
+    switch (charDirection){
+        case 'w':
+            if (tempDirection == 's') { charDirection = 's'; Board::headY++; }
+            else {
+                tempDirection = charDirection;
+                Board::headY--;
+            }
+            break;
+        case 'a':
+            if (tempDirection == 'd') { charDirection = 'd'; Board::headX++; }
+            else {
+                tempDirection = charDirection;
+                Board::headX--;
+            }
+            break;
+        case 's':
+            if (tempDirection == 'w') { charDirection = 'w'; Board::headY--; }
+            else {
+                tempDirection = charDirection;
+                Board::headY++;
+            }
+            break;
+        case 'd':
+            if (tempDirection == 'a') { charDirection = 'a'; Board::headX--; }
+            else {
+                tempDirection = charDirection;
+                Board::headX++;
+            }
+            break;
+        default:
+            break;
+    }
+}
+
+void Logic::GameOver() {
+
+    if (headX == -1 || headX == SizeX[choose] || headY == -1 || headY == SizeY[choose]) {
+        gameOver = true;
+    }
+    for (int i = 0; i < Board::bodyX.size(); i++)
+    {
+        if (headX == Board::bodyX[i] && headY == Board::bodyY[i])
+        {
+            gameOver = true;
+        }
+    }
+}
