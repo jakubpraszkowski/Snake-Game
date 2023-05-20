@@ -7,7 +7,7 @@
 ## Features
 
 - Play the classic Snake Game in your terminal.
-- Control the snake using arrow keys.
+- Control the snake using 'wsad'.
 - Three board sizes to choose from: Small (20x20), Medium (30x30), and Large (40x40).
 - Three types of fruits to collect: Apple, Pineapple, and Banana, each worth different points.
 - Keep track of your current score and high score.
@@ -15,10 +15,6 @@
 ## Getting Started
 
 ### Prerequisites
-
-- C++11 compiler (e.g., g++)
-    - install on Ubuntu: `sudo apt-get install g++`
-    - install on macOS: `brew install gcc`
 - ncurses library
   - install on Ubuntu: `sudo apt-get install libncurses5-dev libncursesw5-dev`
   - install on macOS: `brew install ncurses`
@@ -29,7 +25,7 @@
   - `target_link_libraries(Snake_Game ncurses tinfo)`
 
 ## How to play
-1. Use the arrow keys (↑, ↓, ←, →) to navigate the snake.
+1. Use the 'wsad' (↑ - w, ↓ - s, ← - a, → - d) to navigate the snake.
 2. Eat the fruits (apples, pineapple, and bananas) to score points and make the snake grow longer.
 3. Avoid running into walls or into the snake's own body.
 4. Try to achieve the highest score possible!

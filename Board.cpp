@@ -99,10 +99,6 @@ void Board::printBoard()
     }
     cout << "\u251B" << endl; // bottom right
 
-//    cout << "fruit: " << whichFruit << '\t' << '\t' << "headX:Y: " << headX << ':' << headY << endl;
-//    cout << "bodyX.size()/bodyY.size() : " << bodyX.size() << '/' << bodyY.size() << endl;
-//    for (int i = 0; i < bodyX.size(); i++) { cout << bodyX[i] << '\t' << bodyY[i] << endl; }
-//    cout << endl;
 }
 
 void Board::cleanup()
