@@ -25,7 +25,7 @@
 1. Clone the repository:
 
    ```shell
-   git clone https://github.com/your-username/snake-game.git
+   git clone https://github.com/jakubpraszkowski/Snake-Game.git
     cd snake-game
     ```
 2. Compile the program:
