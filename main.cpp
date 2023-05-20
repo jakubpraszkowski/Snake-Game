@@ -10,7 +10,6 @@ int main()
     Logic l1;
     l1.chooseBoard();
     l1.refresh();
-    sleep(2);
 
     return 0;
 }

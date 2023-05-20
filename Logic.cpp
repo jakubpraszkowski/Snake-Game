@@ -2,13 +2,14 @@
 #include <cstdlib>
 #include <ncurses.h>
 #include <csignal>
+#include <iostream>
 
 void Logic::refresh()
 {
     Board::loadBoard();
     do
     {
-        clear();
+        std::system("clear");
         fruits();
         snake(extend);
         controls();
@@ -16,7 +17,7 @@ void Logic::refresh()
         GameOver();
         usleep(200000);
     } while (!gameOver);
-    clear();
+    std::system("clear");
     Board::cleanup();
 }
 
@@ -85,6 +86,10 @@ void Logic::snake(bool& extend)
 
 void Logic::controls()
 {
+    initscr();
+    cbreak();
+    noecho();
+    nodelay(stdscr, TRUE);
     int ch = getch();
 
     if (ch != ERR) {
@@ -104,6 +109,7 @@ void Logic::controls()
             }
             break;
         case 'a':
+            std::cout << "a" << std::endl;
             if (tempDirection == 'd') { charDirection = 'd'; Board::headX++; }
             else {
                 tempDirection = charDirection;
@@ -127,6 +133,7 @@ void Logic::controls()
         default:
             break;
     }
+    endwin();
 }
 
 void Logic::GameOver() {

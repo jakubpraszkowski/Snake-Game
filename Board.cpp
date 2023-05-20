@@ -27,7 +27,7 @@ int Board::chooseBoard()
         {
             cin.clear();
             cin.ignore(999, '\n');
-            system("cls");
+            std::system("clear");
             cout << e << endl << endl;
         }
     } while (choose > 3 || choose < 1);
@@ -45,7 +45,7 @@ void Board::loadBoard()
     }
     headX = SizeX[choose] / 2;
     headY = SizeY[choose] / 2;
-    bodyX.push_back(headX+1);
+    bodyX.push_back(headX + 1);
     bodyY.push_back(headY);
 }
 
@@ -63,7 +63,7 @@ void Board::printBoard()
             {
                 area[i][j] = charFruit[whichFruit];
             }
-            else area[i][j] = (char)255u;
+            else area[i][j] = "\u2588"; // Full block character
 
             for (int k = 0; k < bodyX.size(); k++)
             {
@@ -74,36 +74,35 @@ void Board::printBoard()
             }
         }
     }
-
-    cout << score << endl;
-    cout << (char)201u; // top left
+    cout << "Score:" << score << endl;
+    cout << "\u250F"; // top left
     for (int i = 0; i < SizeX[choose]; i++)
     {
-        cout << (char)205u; // side up
+        cout << "\u2501"; // side up
     }
-    cout << (char)187u << endl; // top right
+    cout << "\u2513" << endl; // top right
 
     for (int i = 0; i < SizeY[choose]; i++)
     {
-        cout << (char)186u; // left side
+        cout << "\u2503"; // left side
         for (int j = 0; j < SizeX[choose]; j++)
         {
             cout << area[i][j]; // blank
         }
-        cout << (char)186u << endl; // right side
+        cout << "\u2503" << endl; // right side
     }
 
-    cout << (char)200u; // bottom left
+    cout << "\u2517"; // bottom left
     for (int i = 0; i < SizeX[choose]; i++)
     {
-        cout << (char)205u; // side bottom
+        cout << "\u2501"; // side bottom
     }
-    cout << (char)188u << endl; // bottom right
+    cout << "\u251B" << endl; // bottom right
 
-    cout << "fruit: " << whichFruit << '\t' << '\t' << "headX:Y: " << headX << ':' << headY << endl;
-    cout << "bodyX.size()/bodyY.size() : " << bodyX.size() << '/' << bodyY.size() << endl;
-    for (int i = 0; i < bodyX.size(); i++) { cout << bodyX[i] << '\t' << bodyY[i] << endl; }
-    cout << endl;
+//    cout << "fruit: " << whichFruit << '\t' << '\t' << "headX:Y: " << headX << ':' << headY << endl;
+//    cout << "bodyX.size()/bodyY.size() : " << bodyX.size() << '/' << bodyY.size() << endl;
+//    for (int i = 0; i < bodyX.size(); i++) { cout << bodyX[i] << '\t' << bodyY[i] << endl; }
+//    cout << endl;
 }
 
 void Board::cleanup()
