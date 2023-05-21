@@ -4,6 +4,9 @@
   <strong>Snake Game</strong> is a classic arcade game implemented in C++11. It features a snake that grows longer as it eats apples. This version of the game introduces the exciting twist of having 3 apples, 3 sizes for boards, and 3 types of fruits, each offering different points. How high can you score?
 </p>
 
+## Preview
+[Snake game.webm](https://github.com/jakubpraszkowski/Snake-Game/assets/95052844/eb0d57a3-cd96-40d3-b3f5-c012f56cc8c7)
+
 ## Features
 
 - Play the classic Snake Game in your terminal.
