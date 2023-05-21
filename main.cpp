@@ -1,8 +1,6 @@
 #include <iostream>
 #include <cstdlib>
 #include "Logic.h"
-#include "Board.h"
-#include <csignal>
 
 int main()
 {
@@ -10,6 +8,5 @@ int main()
     Logic l1;
     l1.chooseBoard();
     l1.refresh();
-
     return 0;
 }

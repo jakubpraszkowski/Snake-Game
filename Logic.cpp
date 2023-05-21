@@ -17,7 +17,9 @@ void Logic::refresh()
         GameOver();
         usleep(200000);
     } while (!gameOver);
+    getchar();
     std::system("clear");
+    std::cout << "Final Score: " << score << std::endl;
     Board::cleanup();
 }
 
